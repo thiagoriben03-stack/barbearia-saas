@@ -12,10 +12,7 @@ const createPrismaClient = () => {
     neonConfig.webSocketConstructor = ws
     const pool = new Pool({ connectionString: process.env.DATABASE_URL })
     const adapter = new PrismaNeon(pool)
-    return new PrismaClient({
-      adapter,
-      log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error']
-    })
+    return new PrismaClient({ adapter } as any)
   }
   return new PrismaClient()
 }

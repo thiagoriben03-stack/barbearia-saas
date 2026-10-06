@@ -125,7 +125,7 @@ export default async function DashboardPage() {
               </Link>
             </div>
             <div className="space-y-2 md:space-y-3 mt-4 md:mt-6">
-              {upcomingToday.map((appointment) => (
+              {upcomingToday.map((appointment: any) => (
                 <div
                   key={appointment.id}
                   className="flex items-center justify-between gap-3 p-3 md:p-4 bg-[#0A0D12] rounded-xl border border-gray-800 hover:border-gray-700 transition-colors"

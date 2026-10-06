@@ -76,7 +76,7 @@ export default async function ServicosPage() {
           />
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {services.map((service) => (
+            {services.map((service: any) => (
               <Card key={service.id} hover clickable>
                 <CardHeader>
                   <div className="flex items-start justify-between mb-3">
