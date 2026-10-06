@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --surface-0: #05070C;
@@ -10,10 +12,6 @@
   --accent-muted: #0EA5E9;
 }
 
-@theme inline {
-  --font-sans: var(--font-inter);
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -21,7 +19,9 @@
 }
 
 body {
-  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #05070C;
+  color: white;
 }
 
 @layer utilities {
