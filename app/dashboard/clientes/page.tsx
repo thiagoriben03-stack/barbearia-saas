@@ -89,7 +89,7 @@ export default async function ClientesPage() {
           />
         ) : (
           <div className="grid gap-4">
-            {customers.map((customer) => (
+            {customers.map((customer: any) => (
               <Link key={customer.id} href={`/dashboard/clientes/${customer.id}`}>
                 <Card hover clickable>
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">

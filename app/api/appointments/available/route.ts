@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
       }
 
       // Verificar conflito com agendamentos existentes
-      const hasConflict = existingAppointments.some((appointment) => {
+      const hasConflict = existingAppointments.some((appointment: any) => {
         const appointmentStart = new Date(appointment.date);
         const appointmentEnd = new Date(appointmentStart);
         appointmentEnd.setMinutes(appointmentEnd.getMinutes() + appointment.service.duration);

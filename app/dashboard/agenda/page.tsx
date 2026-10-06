@@ -48,14 +48,14 @@ export default async function AgendaPage() {
   });
 
   // Agrupar por data
-  const groupedAppointments = appointments.reduce((acc, appointment) => {
+  const groupedAppointments = appointments.reduce((acc: any, appointment: any) => {
     const dateKey = formatDate(appointment.date);
     if (!acc[dateKey]) {
       acc[dateKey] = [];
     }
     acc[dateKey].push(appointment);
     return acc;
-  }, {} as Record<string, typeof appointments>);
+  }, {} as Record<string, any>);
 
   return (
     <div className="min-h-screen bg-[#05070C]">
@@ -108,7 +108,7 @@ export default async function AgendaPage() {
                     <Calendar className="w-4 h-4 text-[#38BDF8]" />
                     <span className="font-semibold text-sm">{date}</span>
                     <Badge variant="info" size="sm">
-                      {dateAppointments.length}
+                      {(dateAppointments as any[]).length}
                     </Badge>
                   </div>
                   <div className="h-px flex-1 bg-gray-800"></div>
@@ -116,7 +116,7 @@ export default async function AgendaPage() {
 
                 {/* Appointments */}
                 <div className="grid gap-4">
-                  {dateAppointments.map((appointment) => (
+                  {(dateAppointments as any[]).map((appointment: any) => (
                     <Card key={appointment.id} hover clickable>
                       <div className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
                         {/* Time */}
