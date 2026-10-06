@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Barbearia (tenant)
+model Barbershop {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  ownerId     String
+  phone       String?
+  address     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  professionals Professional[]
+  services      Service[]
+  appointments  Appointment[]
+  customers     Customer[]
+}
+
+// Profissional (barbeiro)
+model Professional {
+  id            String   @id @default(cuid())
+  name          String
+  phone         String?
+  barbershopId  String
+  barbershop    Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+
+  appointments  Appointment[]
+}
+
+// Serviço
+model Service {
+  id            String   @id @default(cuid())
+  name          String
+  duration      Int
+  price         Float
+  active        Boolean  @default(true)
+  barbershopId  String
+  barbershop    Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+
+  appointments  Appointment[]
+}
+
+// Cliente (CRM)
+model Customer {
+  id            String   @id @default(cuid())
+  name          String
+  phone         String
+  email         String?
+  barbershopId  String
+  barbershop    Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+
+  appointments  Appointment[]
+}
+
+// Agendamento
+model Appointment {
+  id              String   @id @default(cuid())
+  barbershopId    String
+  barbershop      Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
+  customerId      String
+  customer        Customer @relation(fields: [customerId], references: [id])
+  professionalId  String
+  professional    Professional @relation(fields: [professionalId], references: [id])
+  serviceId       String
+  service         Service @relation(fields: [serviceId], references: [id])
+  date            DateTime
+  status          String   @default("pending")
+  notes           String?
+  createdAt       DateTime @default(now())
+
+  @@index([barbershopId])
+  @@index([date])
+}

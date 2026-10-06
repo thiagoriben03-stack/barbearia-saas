@@ -1,0 +1,159 @@
+# CORREÇÕES UI/UX IMPLEMENTADAS - BARBEARIA SAAS
+
+## COMPONENTES BASE (/components/ui/)
+
+### Button.tsx
+- Altura fixa consistente (h-9, h-11, h-12)
+- Border-radius alterado para rounded-full
+- Focus states adicionados com ring
+- Padding horizontal ajustado
+- Responsivo: mantém altura consistente
+
+### Input.tsx
+- Altura fixa de 11 (44px) para consistência com Select
+- Ícones posicionados corretamente (left-3.5, pl-11)
+- Pointer-events-none nos ícones
+- Focus ring padronizado
+
+### Select.tsx
+- Altura fixa de 11 (44px) igual ao Input
+- Padding-right para acomodar chevron (pr-10)
+- Ícone chevron menor (w-4 h-4)
+- Hover e focus states consistentes
+
+### Card.tsx
+- Padding responsivo: p-5 md:p-6
+- CardHeader com space-y-1.5
+- CardTitle responsivo: text-lg md:text-xl
+- CardContent com space-y-3 default
+- CardFooter com flex items-center gap-2
+
+### Badge.tsx
+- Altura fixa ao invés de padding vertical
+- Cores mais vibrantes (gray-300, green-400, etc)
+- Tamanhos: h-5, h-6, h-7
+
+### EmptyState.tsx
+- Espaçamentos responsivos: py-12 md:py-20
+- Ícones e textos escalados para mobile
+- Button size ajustado de lg para md
+
+### Skeleton.tsx
+- Larguras responsivas com max-w
+- Padding responsivo nos cards
+- Uso de min-w-0 para evitar overflow
+- Gap entre elementos ajustado
+
+## COMPONENTES DASHBOARD
+
+### StatCard.tsx
+- Textos responsivos: text-xs md:text-sm
+- Ícones escalados: w-4 h-4 md:w-5 md:h-5
+- Valores: text-2xl md:text-3xl
+- Gap e truncate no valor
+- Cores de trend ajustadas (green-400, red-400)
+
+### QuickActionCard.tsx
+- Padding responsivo nos ícones
+- Títulos: text-lg md:text-xl
+- Block no Link para melhor clique
+- Leading-relaxed na descrição
+
+### DashboardHeader.tsx
+- Padding responsivo: px-4 md:px-6
+- Títulos truncados
+- Gap responsivo entre elementos
+- Min-w-0 para prevenir overflow
+
+## COMPONENTES BOOKING
+
+### ServiceSelector.tsx
+- Grid single-column em mobile
+- Espaçamentos reduzidos para mobile
+- Ícones e textos escalados
+- Button com w-full
+- Checkmark responsivo
+
+### ProfessionalSelector.tsx
+- Grid 2 colunas em mobile, 3 em desktop
+- Avatares: w-16 h-16 md:w-20 md:h-20
+- Nomes com line-clamp-2
+- Checkmark badge responsivo
+
+### DateSelector.tsx
+- Grid 2 colunas mantido
+- Espaçamentos internos reduzidos (py-2)
+- Ícones e números responsivos
+- Button com w-full
+
+### TimeSelector.tsx
+- Grid 3 colunas mobile, 5 desktop
+- Gap reduzido: gap-2 md:gap-3
+- Cards de loading e empty state responsivos
+- Horários com tamanhos ajustados
+
+### CustomerForm.tsx
+- Summary card aparece primeiro no mobile
+- Form inputs com espaçamento ajustado
+- Desktop mantém layout lado a lado
+- Button size md ao invés de lg
+- Padding responsivo
+
+## PÁGINAS
+
+### dashboard/page.tsx
+- Grid stats: 2 colunas mobile, 4 desktop
+- Gaps progressivos: gap-3 md:gap-4 lg:gap-6
+- Padding container: px-4 md:px-6 lg:px-8
+- Próximos agendamentos: layout horizontal único
+- Quick actions: 1 col mobile, 2 md, 3 lg
+- Link público: stack em mobile, row em desktop
+
+## PRINCÍPIOS APLICADOS
+
+1. **Altura Consistente**
+   - Inputs/Selects: h-11 (44px)
+   - Buttons sm: h-9, md: h-11, lg: h-12
+   - Badges: altura fixa ao invés de padding
+
+2. **Espaçamento Responsivo**
+   - Mobile: espaçamentos menores (gap-3, p-5)
+   - Desktop: espaçamentos maiores (gap-6, p-6)
+   - Uso de md: e lg: breakpoints
+
+3. **Tipografia Responsiva**
+   - Headings: text-xl md:text-2xl
+   - Body: text-sm md:text-base
+   - Small: text-xs md:text-sm
+
+4. **Prevenção de Overflow**
+   - Truncate em textos longos
+   - Min-w-0 em flex containers
+   - Flex-shrink-0 em elementos fixos
+   - Max-w com breakpoints
+
+5. **Interatividade**
+   - Focus states com ring
+   - Hover transitions suaves
+   - Active states com scale
+   - Disabled states claros
+
+6. **Mobile First**
+   - Layout vertical no mobile
+   - Grids com menos colunas
+   - Espaçamentos compactos
+   - Touch targets adequados (min 44px)
+
+## TESTE RECOMENDADO
+
+1. Desktop (1920px+)
+2. Tablet (768px)
+3. Mobile (375px - iPhone SE)
+4. Mobile landscape (640px)
+
+## PRÓXIMOS PASSOS (SE NECESSÁRIO)
+
+1. Verificar formulários de cadastro
+2. Testar agenda em mobile
+3. Validar tabelas responsivas
+4. Conferir modais e dialogs
